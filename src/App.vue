@@ -1,28 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>{{ title }}</h1>
+    <app-worker
+      v-bind:name="name"
+      v-bind:surname="surname"
+      v-bind:type="type"
+      v-on:lvlUp="type = $event + '+'"
+    ></app-worker>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MyWorker from './components/myworker.vue';
 export default {
   name: 'App',
+  data() {
+    return {
+      title: 'Hello Vue',
+      name: 'Иван',
+      surname: 'Иванов',
+      type: 'Уборщик',
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    appWorker: MyWorker,
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
